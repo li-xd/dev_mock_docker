@@ -18,7 +18,7 @@ RUN apt-get update && \
 RUN wget http://cdn.npm.taobao.org/dist/node/v8.4.0/node-v8.4.0-linux-x64.tar.gz && \
     tar -xzvf node-v8.4.0-linux-x64.tar.gz && \
     ln -s /var/www/easy-mock/node-v8.4.0-linux-x64/bin/node /usr/local/bin/node && \
-    ln -s /var/www/home/easy-mock/node-v8.4.0-linux-x64/bin/npm /usr/local/bin/npm
+    ln -s /var/www/easy-mock/node-v8.4.0-linux-x64/bin/npm /usr/local/bin/npm
 
 
 RUN mkdir easy-mock && \
