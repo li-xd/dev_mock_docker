@@ -14,6 +14,8 @@ RUN apt-get update && \
     apt-transport-https \
     ca-certificates
 
+RUN echo 'Asia/Shanghai' >/etc/timezone
+
 # install nodejs
 RUN wget http://cdn.npm.taobao.org/dist/node/v8.4.0/node-v8.4.0-linux-x64.tar.gz && \
     tar -xzvf node-v8.4.0-linux-x64.tar.gz && \
