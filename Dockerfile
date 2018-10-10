@@ -8,7 +8,7 @@ apt-get upgrade -y && \
 apt-get install -y software-properties-common locales && \
 locale-gen en_US.UTF-8 && \
 export LANG=en_US.UTF-8 && \
-apt-get install -y language-pack-zh-hans language-pack-zh-hans-base build-essential  python wget jq  git  apt-transport-https ca-certificates && \
+apt-get install -y language-pack-zh-hans language-pack-zh-hans-base build-essential tzdata python wget jq  git  apt-transport-https ca-certificates && \
 rm -rf /var/lib/apt/lists/*
 
 
