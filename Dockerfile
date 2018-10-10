@@ -14,8 +14,6 @@ RUN apt-get update && \
     apt-transport-https \
     ca-certificates
 
-USER root
-
 # install nodejs
 RUN wget http://cdn.npm.taobao.org/dist/node/v8.4.0/node-v8.4.0-linux-x64.tar.gz && \
     tar -xzvf node-v8.4.0-linux-x64.tar.gz && \
@@ -35,4 +33,4 @@ RUN jq '.db = "mongodb://mongodb/easy-mock"' config/default.json > config/tmp.js
 RUN jq '.redis = { port: 6379, host: "redis" }' config/default.json > config/tmp.json && \
     mv config/tmp.json config/default.json
 
-RUN npm install && npm run build
+RUN npm install --unsafe-perm && npm run build
