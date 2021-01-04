@@ -13,8 +13,8 @@ rm -rf /var/lib/apt/lists/*
 
 
 # install nodejs
-RUN wget http://cdn.npm.taobao.org/dist/node/v8.4.0/node-v8.4.0-linux-x64.tar.gz && \
-    tar -xzvf node-v8.4.0-linux-x64.tar.gz && \
+RUN wget https://nodejs.org/dist/v8.4.0/node-v8.4.0-linux-x64.tar.xz && \
+    tar xf node-v8.4.0-linux-x64.tar.xz && \
     ln -s /var/www/easy-mock/node-v8.4.0-linux-x64/bin/node /usr/local/bin/node && \
     ln -s /var/www/easy-mock/node-v8.4.0-linux-x64/bin/npm /usr/local/bin/npm
 
@@ -26,9 +26,9 @@ RUN mkdir easy-mock && \
 # npm install dependencies and run build
 WORKDIR /var/www/easy-mock/easy-mock
 
-RUN jq '.db = "mongodb://mongodb/easy-mock"' config/default.json > config/tmp.json && \
+RUN jq '.db = "mongodb://root:lixd_root@biz-mongo-svc:27017/biz_easy_mock?authSource=admin"' config/default.json > config/tmp.json && \
     mv config/tmp.json config/default.json
-RUN jq '.redis = { port: 6379, host: "redis" }' config/default.json > config/tmp.json && \
+RUN jq '.redis = { port: 6379, host: "redis-svc" }' config/default.json > config/tmp.json && \
     mv config/tmp.json config/default.json
 
 RUN npm install --unsafe-perm && npm run build
